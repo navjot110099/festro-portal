@@ -1,0 +1,530 @@
+@import "tailwindcss";
+
+/*
+ * FadHype design system
+ * ---------------------------------------------------------------
+ * Semantic tokens live on :root and are re-declared per theme.
+ * Components only ever reference semantic utilities (bg-surface,
+ * text-muted, border-line …), never raw hex values, so the whole
+ * product re-themes from this one file.
+ */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Planes */
+  --bg: #f7f3ed;
+  --bg-elevated: #fbf8f3;
+  --surface: #fffdfa;
+  --surface-2: #f8f3ec;
+  --surface-3: #efe8de;
+  --overlay: rgb(23 20 22 / 0.42);
+
+  /* Lines */
+  --line: #e9e0d4;
+  --line-strong: #d9cdbe;
+
+  /* Ink */
+  --fg: #171416;
+  --fg-2: #463f42;
+  --muted: #645d61;
+  --subtle: #736c70;
+
+  /* Brand */
+  --brand: #541827;
+  --brand-hover: #6a1f33;
+  --brand-deep: #351019;
+  --brand-fg: #f7f3ed;
+  --accent: #8e263b;
+  --accent-ink: #7a1f33;
+  --accent-soft: rgb(142 38 59 / 0.075);
+  --accent-soft-2: rgb(142 38 59 / 0.13);
+  --ring: #8e263b;
+
+  /* Status (reserved meaning — always paired with an icon or label) */
+  --success: #22744f;
+  --success-soft: rgb(34 116 79 / 0.1);
+  --warning: #9a5b0c;
+  --warning-soft: rgb(196 125 22 / 0.13);
+  --danger: #b0233a;
+  --danger-soft: rgb(176 35 58 / 0.09);
+  --info: #335f9e;
+  --info-soft: rgb(51 95 158 / 0.1);
+
+  /* Data visualisation (validated: CVD-safe adjacent pairs, ≥3:1 on surface) */
+  --chart-1: #9b2c45;
+  --chart-2: #3a72c9;
+  --chart-3: #b87a0f;
+  --chart-4: #17997a;
+  --chart-5: #8a5bd0;
+  --chart-grid: #efe8de;
+  --chart-axis: #756e71;
+
+  /* Elevation — warm-tinted, never grey */
+  --shadow-xs: 0 1px 2px rgb(53 16 25 / 0.04);
+  --shadow-sm: 0 1px 2px rgb(53 16 25 / 0.05), 0 2px 6px -2px rgb(53 16 25 / 0.06);
+  --shadow-md: 0 2px 4px rgb(53 16 25 / 0.04), 0 10px 24px -8px rgb(53 16 25 / 0.12);
+  --shadow-lg: 0 4px 10px rgb(53 16 25 / 0.05), 0 24px 56px -16px rgb(53 16 25 / 0.22);
+  --shadow-brand: 0 1px 0 rgb(255 255 255 / 0.12) inset, 0 8px 22px -10px rgb(84 24 39 / 0.65);
+
+  --sidebar-bg: #fbf8f3;
+  --skeleton: #efe8de;
+  --skeleton-shine: #f8f3ec;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0e0a0c;
+  --bg-elevated: #130d10;
+  --surface: #1a1216;
+  --surface-2: #21171b;
+  --surface-3: #2a1d23;
+  --overlay: rgb(5 3 4 / 0.66);
+
+  --line: #2c2026;
+  --line-strong: #3d2c34;
+
+  --fg: #f4eee7;
+  --fg-2: #d7cec8;
+  --muted: #aa9fa4;
+  --subtle: #8a7f84;
+
+  --brand: #8e263b;
+  --brand-hover: #a3304a;
+  --brand-deep: #351019;
+  --brand-fg: #fbf6f0;
+  --accent: #e0697f;
+  --accent-ink: #ec8b9c;
+  --accent-soft: rgb(224 105 127 / 0.1);
+  --accent-soft-2: rgb(224 105 127 / 0.17);
+  --ring: #e0697f;
+
+  --success: #5cc493;
+  --success-soft: rgb(92 196 147 / 0.12);
+  --warning: #e3a64a;
+  --warning-soft: rgb(227 166 74 / 0.13);
+  --danger: #f07087;
+  --danger-soft: rgb(240 112 135 / 0.12);
+  --info: #7ba7ea;
+  --info-soft: rgb(123 167 234 / 0.12);
+
+  --chart-1: #d9566f;
+  --chart-2: #4f8be0;
+  --chart-3: #b98124;
+  --chart-4: #1e9c7a;
+  --chart-5: #9472e0;
+  --chart-grid: #2a1e24;
+  --chart-axis: #8d8186;
+
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35), 0 2px 8px -2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 2px 6px rgb(0 0 0 / 0.35), 0 12px 28px -10px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 4px 12px rgb(0 0 0 / 0.4), 0 28px 64px -18px rgb(0 0 0 / 0.7);
+  --shadow-brand: 0 1px 0 rgb(255 255 255 / 0.1) inset, 0 10px 26px -10px rgb(142 38 59 / 0.75);
+
+  --sidebar-bg: #120c0f;
+  --skeleton: #241a1f;
+  --skeleton-shine: #2e2128;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-overlay: var(--overlay);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-fg: var(--brand-fg);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-soft-2: var(--accent-soft-2);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar-bg);
+
+  /* Fixed brand constants (identical in both themes) */
+  --color-cherry: #541827;
+  --color-burgundy: #351019;
+  --color-wine: #8e263b;
+  --color-ivory: #f7f3ed;
+  --color-cream: #efe8de;
+  --color-charcoal: #171416;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: var(--font-instrument-serif), "Iowan Old Style", Georgia, serif;
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-brand: var(--shadow-brand);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.36, 0.64, 1);
+
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-drift: drift 24s ease-in-out infinite alternate;
+  --animate-drift-slow: drift 36s ease-in-out infinite alternate-reverse;
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-shake: shake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-in: menu-in 160ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  @keyframes drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(4%, -3%, 0) scale(1.06); }
+    100% { transform: translate3d(-3%, 4%, 0) scale(0.97); }
+  }
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.86); }
+  }
+  @keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+  }
+  @keyframes caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * CSS-driven entrances run before hydration, so server-rendered content is never hidden behind JS.
+ * Fill mode is `backwards` (not `both`): a finished transform animation that stays "in effect"
+ * would keep the element a containing block for position:fixed descendants (drag overlays, etc.).
+ */
+.animate-rise {
+  animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.animate-page {
+  animation: rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.animate-fade {
+  animation: fade 1s ease-out backwards;
+}
+.stagger > * {
+  animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 55ms;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 110ms;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 165ms;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 220ms;
+}
+.stagger > *:nth-child(6) {
+  animation-delay: 275ms;
+}
+.stagger > *:nth-child(7) {
+  animation-delay: 330ms;
+}
+.stagger > *:nth-child(8) {
+  animation-delay: 385ms;
+}
+.stagger > *:nth-child(9) {
+  animation-delay: 440ms;
+}
+.stagger > *:nth-child(10) {
+  animation-delay: 495ms;
+}
+.stagger > *:nth-child(11) {
+  animation-delay: 550ms;
+}
+.stagger > *:nth-child(12) {
+  animation-delay: 605ms;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------- base */
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    font-feature-settings: "ss01", "cv11";
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent-soft-2);
+    color: var(--fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--subtle);
+  }
+
+  /* Native scrollbars, tuned to the palette */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+}
+
+/* ---------------------------------------------------------- utilities */
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility surface-card {
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-xs);
+}
+
+@utility text-gradient-brand {
+  background-image: linear-gradient(100deg, #f7f3ed 0%, #e9c9cf 45%, #c9798a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@utility skeleton {
+  background-color: var(--skeleton);
+  background-image: linear-gradient(90deg, var(--skeleton) 0px, var(--skeleton-shine) 120px, var(--skeleton) 240px);
+  background-size: 800px 100%;
+  background-repeat: no-repeat;
+  animation: var(--animate-shimmer);
+  border-radius: 0.5rem;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility noise {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* --------------------------------------------- theme change transition */
+
+/* Applied for ~400ms while the theme flips (fallback when View Transitions are unavailable). */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 360ms var(--ease-out-expo),
+    border-color 360ms var(--ease-out-expo),
+    color 360ms var(--ease-out-expo),
+    fill 360ms var(--ease-out-expo),
+    stroke 360ms var(--ease-out-expo),
+    box-shadow 360ms var(--ease-out-expo) !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* ------------------------------------------------------- Recharts polish */
+
+.recharts-wrapper,
+.recharts-surface {
+  outline: none;
+}
+.recharts-cartesian-axis-tick-value {
+  font-variant-numeric: tabular-nums;
+}
+.recharts-tooltip-cursor {
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* ------------------------------------------------------------------ print */
+
+/* A dedicated copy of the report is portaled to <body>; printing shows only that copy. */
+.print-root {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+  }
+  body > *:not(.print-root) {
+    display: none !important;
+  }
+  .print-root {
+    display: block !important;
+  }
+  .print-root article {
+    max-width: none !important;
+    box-shadow: none !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
