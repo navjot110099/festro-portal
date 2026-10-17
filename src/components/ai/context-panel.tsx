@@ -25,7 +25,7 @@ export function ContextPanel({ onPrompt }: { onPrompt: (p: string) => void }) {
         <h2 className="flex items-center gap-2 text-[13px] font-semibold text-fg">
           <Database className="size-3.5 text-muted" aria-hidden /> Workspace context
         </h2>
-        <p className="mt-1 text-[12px] text-muted">FadHype AI reads from {connected.length} connected sources.</p>
+        <p className="mt-1 text-[12px] text-muted">Festro AI reads from {connected.length} connected sources.</p>
         <ul className="mt-3 space-y-2">
           {connected.map((i) => (
             <li key={i.id} className="flex items-center justify-between gap-2 text-[12.5px]">

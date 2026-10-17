@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <main className="grid min-h-dvh place-items-center bg-bg px-6">
       <div className="max-w-md text-center">
-        <Logo className="justify-center" />
+        <Logo size="lg" />
         <p className="mt-10 font-mono text-xs tracking-widest text-subtle">ERROR 404</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight text-fg">This page took a different route.</h1>
         <p className="mt-3 text-muted">The page you’re looking for doesn’t exist or has moved.</p>

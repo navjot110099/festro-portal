@@ -1,5 +1,5 @@
 /**
- * Domain model for the FadHype portal.
+ * Domain model for the Festro portal.
  *
  * These types are the contract between the UI and the data layer
  * (`src/lib/api`). Mock data in `src/data` satisfies them today; a REST API,

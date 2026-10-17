@@ -162,7 +162,7 @@ function buildActivity(lead: { name: string; source: LeadSource; status: LeadSta
   const reached = lead.status === "lost" ? 2 : Math.max(0, order.indexOf(lead.status) + 1);
   const span = Math.max(now - created, hour * 6);
   const step = span / (reached + 2);
-  if (reached >= 1) items.push({ id: "a3", type: "status", title: "Qualified by lead scoring", detail: "Budget, timing and team size match.", at: new Date(created + step).toISOString(), by: "FadHype AI" });
+  if (reached >= 1) items.push({ id: "a3", type: "status", title: "Qualified by lead scoring", detail: "Budget, timing and team size match.", at: new Date(created + step).toISOString(), by: "Festro AI" });
   if (reached >= 2) items.push({ id: "a4", type: "call", title: "Discovery call — 18 min", detail: "Discussed goals, dates and deliverables.", at: new Date(created + step * 1.6).toISOString(), by: "Priya Nair" });
   if (reached >= 3) items.push({ id: "a5", type: "email", title: "Proposal sent", detail: "Package proposal with two date options.", at: new Date(created + step * 2.2).toISOString(), by: "Aanya Kapoor" });
   if (lead.status === "converted") items.push({ id: "a6", type: "status", title: "Booking confirmed — deposit paid", at: new Date(now - rand.int(2, 30) * hour).toISOString() });
@@ -210,7 +210,7 @@ export function buildLeads(now = Date.now()): Lead[] {
     };
   });
 
-  // The headline lead referenced by notifications, the activity feed and FadHype AI.
+  // The headline lead referenced by notifications, the activity feed and Festro AI.
   leads[0] = {
     ...leads[0],
     status: "qualified",

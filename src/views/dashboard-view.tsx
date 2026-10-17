@@ -45,7 +45,7 @@ function InsightBanner({ title, detail }: { title: string; detail: string }) {
                 <Sparkles className="size-[18px]" aria-hidden />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[11.5px] font-semibold tracking-[0.08em] text-accent-ink uppercase">FadHype AI · this week</p>
+                <p className="text-[11.5px] font-semibold tracking-[0.08em] text-accent-ink uppercase">Festro AI · this week</p>
                 <p className="mt-0.5 text-[14.5px] font-semibold text-fg">{title}</p>
                 <p className="mt-0.5 text-[13px] leading-relaxed text-muted">{detail}</p>
               </div>
@@ -107,7 +107,7 @@ export function DashboardView() {
             </Button>
             <Button asChild>
               <Link href="/ai">
-                <Sparkles /> Ask FadHype AI
+                <Sparkles /> Ask Festro AI
               </Link>
             </Button>
           </>

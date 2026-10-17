@@ -7,7 +7,7 @@ export const knowledgeBase: KnowledgeArticle[] = [
   { id: "kb4", title: "Reading your lead score", category: "Leads", readTime: 3, excerpt: "Scores combine fit, intent and engagement. Here's what moves a lead from 60 to 90." },
   { id: "kb5", title: "Approving tasks and deliverables", category: "Workflow", readTime: 2, excerpt: "Review items in the Tasks board and leave feedback your team sees instantly." },
   { id: "kb6", title: "Scheduling and sharing client reports", category: "Reports", readTime: 3, excerpt: "Automate monthly reports and share secure links with stakeholders." },
-  { id: "kb7", title: "Asking FadHype AI better questions", category: "AI", readTime: 4, excerpt: "Prompts that produce sharper analysis — with examples for revenue, leads and SEO." },
+  { id: "kb7", title: "Asking Festro AI better questions", category: "AI", readTime: 4, excerpt: "Prompts that produce sharper analysis — with examples for revenue, leads and SEO." },
   { id: "kb8", title: "Understanding ROAS vs ROI", category: "Campaigns", readTime: 3, excerpt: "Why a 4.8x ROAS and your true ROI are different numbers, and when each matters." },
 ];
 
@@ -27,7 +27,7 @@ export function buildTickets(now = Date.now()): SupportTicket[] {
 export const systemStatus = [
   { id: "portal", label: "Portal & dashboards", status: "operational" as const },
   { id: "sync", label: "Data sync (ads, analytics, CRM)", status: "operational" as const },
-  { id: "ai", label: "FadHype AI", status: "operational" as const },
+  { id: "ai", label: "Festro AI", status: "operational" as const },
   { id: "reports", label: "Report generation", status: "operational" as const },
 ];
 
@@ -41,5 +41,5 @@ export const integrations: Integration[] = [
   { id: "supabase", name: "Supabase / PostgreSQL", category: "Data", description: "Warehouse for custom reporting", connected: true, lastSync: "1 hr ago" },
   { id: "slack", name: "Slack", category: "Communication", description: "Alerts for leads and anomalies", connected: false },
   { id: "stripe", name: "Stripe", category: "Data", description: "Revenue and payments", connected: false },
-  { id: "openai", name: "AI model provider", category: "AI", description: "Bring your own model key for FadHype AI", connected: false },
+  { id: "openai", name: "AI model provider", category: "AI", description: "Bring your own model key for Festro AI", connected: false },
 ];

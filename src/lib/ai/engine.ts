@@ -4,7 +4,7 @@ import { sleep } from "@/lib/utils";
 import type { AiResponse } from "@/types";
 
 /**
- * FadHype AI — demo engine.
+ * Festro AI — demo engine.
  *
  * Production wiring: POST the prompt and a compact workspace context
  * (KPIs, top campaigns, pipeline, SEO scores) to a server route that calls
@@ -15,7 +15,7 @@ export async function askAssistant(prompt: string, forced?: AiIntent): Promise<{
   const intent = forced ?? detectIntent(prompt);
   await sleep(350);
   if (getDemoMode() === "error") {
-    throw new Error("FadHype AI couldn't reach your data sources. Check your integrations and try again.");
+    throw new Error("Festro AI couldn't reach your data sources. Check your integrations and try again.");
   }
   return { intent, response: responses[intent] };
 }

@@ -103,13 +103,13 @@ function ArticleDialog({ article, open, onOpenChange }: { article: KnowledgeArti
       <div className="space-y-4 pt-1 text-[14px] leading-relaxed text-fg-2">
         <p className="text-[15px] text-fg">{article.excerpt}</p>
         <p>
-          Your FadHype portal combines data from every connected source into a single model, so the numbers you see on the dashboard, in reports and in AI answers always agree. When a platform reports a different figure, it is usually because of attribution windows or how conversions are de-duplicated across channels.
+          Your Festro portal combines data from every connected source into a single model, so the numbers you see on the dashboard, in reports and in AI answers always agree. When a platform reports a different figure, it is usually because of attribution windows or how conversions are de-duplicated across channels.
         </p>
         <h3 className="pt-2 text-[14px] font-semibold text-fg">Step by step</h3>
         <ol className="list-decimal space-y-1.5 pl-5">
           <li>Open Settings → Integrations and confirm the source shows “Connected”.</li>
           <li>Check the last sync time. Most sources refresh every 15 minutes.</li>
-          <li>Ask FadHype AI to explain any number. It will show the sources it used.</li>
+          <li>Ask Festro AI to explain any number. It will show the sources it used.</li>
         </ol>
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-surface-2 p-3.5">
           <p className="text-[13px]">Was this article helpful?</p>
@@ -218,7 +218,7 @@ export function SupportView() {
 
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
         <Card as="section" id="knowledge-base" aria-labelledby="kb-h" className="scroll-mt-24">
-          <CardHeader titleId="kb-h" title="Knowledge base" description={query ? `${articles.length} results for “${query}”` : "Guides written by the FadHype team"} />
+          <CardHeader titleId="kb-h" title="Knowledge base" description={query ? `${articles.length} results for “${query}”` : "Guides written by the Festro team"} />
           <div className="flex gap-1.5 overflow-x-auto px-5 pt-4 scrollbar-none" role="group" aria-label="Filter by category">
             <button type="button" aria-pressed={!category} onClick={() => setCategory(null)} className={cn("shrink-0 rounded-full border px-3 py-1 text-[12px] transition-colors", !category ? "border-accent/30 bg-accent-soft text-accent-ink" : "border-line text-fg-2 hover:bg-surface-2")}>
               All
@@ -244,13 +244,13 @@ export function SupportView() {
                   ))}
                 </div>
               }
-              empty={{ title: "Help articles unavailable", description: "Ask FadHype AI or open a ticket instead.", icon: BookOpen }}
+              empty={{ title: "Help articles unavailable", description: "Ask Festro AI or open a ticket instead.", icon: BookOpen }}
             >
               {() =>
                 articles.length === 0 ? (
                   <div className="px-4 py-10 text-center">
                     <p className="text-sm font-medium text-fg">No articles match “{query}”</p>
-                    <p className="mt-1 text-[13px] text-muted">Try another term, or ask FadHype AI.</p>
+                    <p className="mt-1 text-[13px] text-muted">Try another term, or ask Festro AI.</p>
                   </div>
                 ) : (
                   <ul className="divide-y divide-line">

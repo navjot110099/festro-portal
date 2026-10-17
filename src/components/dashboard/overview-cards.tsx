@@ -179,7 +179,7 @@ export function PriorityTasksCard() {
   const res = useResource(() => api.tasks.list());
   return (
     <Card as="section" aria-labelledby="tasks-title" className="flex flex-col">
-      <CardHeader titleId="tasks-title" title="Priority work" description="What your FadHype team is shipping next" action={<ViewAll href="/tasks" label="Board" />} />
+      <CardHeader titleId="tasks-title" title="Priority work" description="What your Festro team is shipping next" action={<ViewAll href="/tasks" label="Board" />} />
       <div className="flex-1 px-5 pt-4 pb-5">
         <AsyncView
           status={res.status}

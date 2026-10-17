@@ -133,7 +133,7 @@ function ServiceDialog({ service, open, onOpenChange }: { service: Service | nul
         {service.status === "recommended" && (
           <p className="rounded-xl border border-accent/15 bg-accent-soft p-3.5 text-[13px] leading-relaxed text-fg-2">
             <span className="font-semibold text-accent-ink">Why we recommend it: </span>
-            your traffic and lead volume are now high enough that small improvements in conversion compound quickly. FadHype AI projects {service.metric.value} from this service.
+            your traffic and lead volume are now high enough that small improvements in conversion compound quickly. Festro AI projects {service.metric.value} from this service.
           </p>
         )}
       </div>
@@ -163,7 +163,7 @@ export function ServicesView() {
 
   return (
     <div className="space-y-8">
-      <PageHeader title="Services" description="Your FadHype growth stack: what's running, what's next, and what it's delivering." />
+      <PageHeader title="Services" description="Your Festro growth stack: what's running, what's next, and what it's delivering." />
 
       <Card className="overflow-hidden">
         <div className="relative flex flex-col gap-5 p-5 sm:flex-row sm:items-center sm:p-6">

@@ -32,7 +32,7 @@ export const reportTemplates: ReportTemplate[] = [
   {
     id: "roi",
     name: "ROI Report",
-    description: "Investment vs attributed return across every FadHype service on your plan.",
+    description: "Investment vs attributed return across every Festro service on your plan.",
     sections: ["Investment summary", "Attributed revenue", "Payback period", "Forecast"],
     pages: 4,
   },

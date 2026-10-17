@@ -1,6 +1,6 @@
 import type { Service } from "@/types";
 
-/** FadHype capabilities and their status on this workspace's plan. */
+/** Festro capabilities and their status on this workspace's plan. */
 export const services: Service[] = [
   {
     id: "web",

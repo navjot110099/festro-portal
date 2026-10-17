@@ -17,7 +17,7 @@ export function LoginView() {
           <LoginForm />
         </div>
         <footer className="relative flex flex-col items-center justify-between gap-2 text-[12px] text-subtle sm:flex-row">
-          <p>© {new Date().getFullYear()} FadHype. Digital Growth. Built Smarter.</p>
+          <p>© {new Date().getFullYear()} Festro. Digital Growth. Built Smarter.</p>
           <p>Demo environment · all data is illustrative</p>
         </footer>
       </main>

@@ -137,7 +137,7 @@ function AiCard() {
   return (
     <div className="relative overflow-hidden rounded-xl border border-line bg-[linear-gradient(160deg,var(--accent-soft),transparent_70%)] p-3.5">
       <div className="flex items-center gap-2 text-[12px] font-semibold text-accent-ink">
-        <Sparkles className="size-3.5" aria-hidden /> FadHype AI
+        <Sparkles className="size-3.5" aria-hidden /> Festro AI
       </div>
       <p className="mt-1.5 text-[12.5px] leading-snug text-fg-2">3 growth opportunities found this week, worth about $5.9K.</p>
       <Link href="/ai" className="mt-2.5 inline-flex items-center gap-1 text-[12.5px] font-medium text-fg hover:text-accent-ink">
@@ -157,7 +157,7 @@ export function Sidebar({ collapsed, onToggle }: { collapsed: boolean; onToggle:
       aria-label="Sidebar"
     >
       <div className={cn("flex h-16 shrink-0 items-center", collapsed ? "justify-center" : "justify-between px-5")}>
-        <Link href="/dashboard" aria-label="FadHype dashboard" className="rounded-lg">
+        <Link href="/dashboard" aria-label="Festro dashboard" className="rounded-lg">
           {collapsed ? <LogoMark /> : <Logo />}
         </Link>
         {!collapsed && (

@@ -123,7 +123,7 @@ export function LeadDrawer({
           className="rounded-xl border border-accent/15 bg-accent-soft p-3.5"
         >
           <p className="flex items-center gap-1.5 text-[12px] font-semibold text-accent-ink">
-            <Sparkles className="size-3.5" aria-hidden /> FadHype AI insight
+            <Sparkles className="size-3.5" aria-hidden /> Festro AI insight
           </p>
           <p className="mt-1 text-[13px] leading-relaxed text-fg-2">{lead.insight}</p>
         </motion.div>

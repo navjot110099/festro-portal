@@ -10,14 +10,14 @@ function resolveSiteUrl() {
 
 /** Public site configuration — the single source for SEO, Open Graph and structured data. */
 export const site = {
-  name: "FadHype",
+  name: "Festro",
   tagline: "Digital Growth. Built Smarter.",
   description:
-    "FadHype is a digital growth company combining web development, SEO and GEO, paid advertising, lead generation and AI automation into one measurable growth system for modern businesses.",
+    "Festro is a digital growth company combining web development, SEO and GEO, paid advertising, lead generation and AI automation into one measurable growth system for modern businesses.",
   shortDescription: "Growth, technology and digital systems engineered for modern businesses.",
   url: resolveSiteUrl(),
   locale: "en_US",
-  email: "hello@fadhype.com",
+  email: "hello@festro.com",
   keywords: [
     "digital growth agency",
     "digital marketing",

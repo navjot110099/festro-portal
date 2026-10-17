@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/** The FadHype AI mark: a soft, slowly breathing wine orb. */
+/** The Festro AI mark: a soft, slowly breathing wine orb. */
 export function AiOrb({ size = "md", active = false, className }: { size?: "sm" | "md" | "lg"; active?: boolean; className?: string }) {
   const dims = { sm: "size-7", md: "size-9", lg: "size-16" }[size];
   const icon = { sm: "size-3.5", md: "size-4", lg: "size-7" }[size];

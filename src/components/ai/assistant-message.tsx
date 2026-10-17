@@ -118,7 +118,7 @@ export function AssistantMessage({
         {/* Reasoning */}
         <AnimatePresence initial={false} mode="wait">
           {thinking ? (
-            <motion.ol key="steps" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, height: 0 }} className="space-y-1.5 rounded-xl border border-line bg-surface-2/50 p-3" aria-label="FadHype AI is analysing">
+            <motion.ol key="steps" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, height: 0 }} className="space-y-1.5 rounded-xl border border-line bg-surface-2/50 p-3" aria-label="Festro AI is analysing">
               {steps.map((s, i) => (
                 <motion.li
                   key={s}
@@ -182,7 +182,7 @@ export function AssistantMessage({
                       aria-pressed={feedback === f}
                       onClick={() => {
                         setFeedback(f);
-                        toast({ title: "Thanks for the feedback", description: "It helps FadHype AI tune answers to your business.", tone: "ai" });
+                        toast({ title: "Thanks for the feedback", description: "It helps Festro AI tune answers to your business.", tone: "ai" });
                       }}
                       className={cn("grid size-7 place-items-center rounded-md transition-colors hover:bg-surface-2", feedback === f ? "text-accent-ink" : "text-subtle hover:text-fg")}
                     >

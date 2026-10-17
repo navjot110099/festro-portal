@@ -3,7 +3,7 @@
 import { ChevronRight, Menu as MenuIcon, Search, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogoMark } from "@/components/brand/logo";
+import { Logo } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/feedback";
@@ -27,8 +27,8 @@ export function Topbar({ onOpenNav, onOpenCommand, onShowShortcuts }: { onOpenNa
         >
           <MenuIcon className="size-5" />
         </button>
-        <Link href="/dashboard" className="lg:hidden" aria-label="FadHype dashboard">
-          <LogoMark className="size-7" />
+        <Link href="/dashboard" className="lg:hidden" aria-label="Festro dashboard">
+          <Logo size="sm" />
         </Link>
 
         <nav aria-label="Breadcrumb" className="hidden min-w-0 items-center gap-1.5 text-[13px] md:flex">

@@ -84,7 +84,7 @@ export function MobileDrawer({ open, onOpenChange }: { open: boolean; onOpenChan
                 className="fixed inset-y-0 left-0 z-[61] flex w-[min(320px,88vw)] flex-col border-r border-line bg-sidebar shadow-lg lg:hidden"
               >
                 <Dialog.Title className="sr-only">Navigation</Dialog.Title>
-                <Dialog.Description className="sr-only">All sections of the FadHype portal</Dialog.Description>
+                <Dialog.Description className="sr-only">All sections of the Festro portal</Dialog.Description>
                 <div className="flex h-16 items-center justify-between px-5">
                   <Logo />
                   <Dialog.Close className="grid size-9 place-items-center rounded-lg text-muted hover:bg-surface-2 hover:text-fg" aria-label="Close navigation">

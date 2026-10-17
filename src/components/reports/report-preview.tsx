@@ -1,6 +1,5 @@
 "use client";
 
-import { LogoMark } from "@/components/brand/logo";
 import { monthly } from "@/data/analytics";
 import { campaignTotals, campaigns } from "@/data/campaigns";
 import { primaryKpis, secondaryKpis } from "@/data/dashboard";
@@ -112,7 +111,7 @@ function sectionContent(type: ReportType) {
     case "roi":
       return {
         title: "ROI Report",
-        summary: `Across every FadHype service on the ${currentUser.plan} plan, attributed revenue over the last six months was ${formatCurrency(kpi("total-revenue").value)}, up ${formatChange(kpi("total-revenue").change)} on the prior six months. Paid media alone returned ${t.roas.toFixed(1)}x.`,
+        summary: `Across every Festro service on the ${currentUser.plan} plan, attributed revenue over the last six months was ${formatCurrency(kpi("total-revenue").value)}, up ${formatChange(kpi("total-revenue").change)} on the prior six months. Paid media alone returned ${t.roas.toFixed(1)}x.`,
         kpis: [fmt("total-revenue"), fmt("roi"), fmt("cac"), fmt("conversion-rate")],
         highlights: ["Payback period on paid media: 19 days", "Organic channel now 22% of attributed revenue", "CAC down 9.3% month over month"],
         next: ["Reinvest efficiency gains into high-intent search", "Launch conversion optimisation (projected +14%)", "Review the Q1 forecast with your strategist"],
@@ -139,12 +138,9 @@ export function ReportPreview({ template, period }: { template: ReportTemplate; 
       <div className="h-1.5 rounded-t-sm bg-[linear-gradient(90deg,#351019,#8e263b,#541827)]" />
       <div className="p-7 sm:p-10">
         <header className="flex items-start justify-between gap-4 border-b border-[#efe8de] pb-6">
-          <div className="flex items-center gap-2.5">
-            <LogoMark className="size-7" />
-            <div className="leading-tight">
-              <p className="text-[14px] font-semibold tracking-[-0.02em]">FadHype</p>
-              <p className="text-[10.5px] text-[#6e676b]">Digital Growth. Built Smarter.</p>
-            </div>
+          <div className="leading-tight">
+            <p className="text-[20px] font-semibold tracking-[-0.045em] text-[#171416]">Festro</p>
+            <p className="mt-1 text-[10.5px] text-[#6e676b]">Digital Growth. Built Smarter.</p>
           </div>
           <div className="text-right text-[11px] text-[#6e676b]">
             <p>Prepared for</p>

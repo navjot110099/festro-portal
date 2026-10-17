@@ -1,8 +1,8 @@
-# FadHype — Digital Growth Portal
+# Festro — Digital Growth Portal
 
 **Digital Growth. Built Smarter.**
 
-A premium client operating system for FadHype, a digital growth company: performance dashboards, analytics, lead management, an AI growth assistant, SEO & GEO visibility, campaigns, services, portfolio, delivery board, client reporting and support, in one product.
+A premium client operating system for Festro, a digital growth company: performance dashboards, analytics, lead management, an AI growth assistant, SEO & GEO visibility, campaigns, services, portfolio, delivery board, client reporting and support, in one product.
 
 This is a portfolio build. All data is illustrative and comes from a central mock data layer that can be swapped for real APIs without touching components.
 
@@ -10,12 +10,12 @@ This is a portfolio build. All data is illustrative and comes from a central moc
 
 ## Demo login
 
-| Field    | Value              |
-| -------- | ------------------ |
-| Email    | `deep@fadhype.com` |
-| Password | `growth2026`       |
+| Field    | Value             |
+| -------- | ----------------- |
+| Email    | `deep@festro.com` |
+| Password | `growth2026`      |
 
-The sign-in page has a **Use demo account** button that fills these in. Credentials live in `src/data/user.ts`. They only unlock mock data.
+The pre-rebrand email `deep@fadhype.com` is still accepted. The credentials are not shown on the sign-in page; they live in `src/data/user.ts` and only unlock mock data.
 
 The demo workspace belongs to a fictional client, **Meridian Studio**, a B2B photo and video studio. The case studies under **Projects** (LumaFit, Northwind Dental and others) are fictional too, and the UI labels them as illustrative.
 
@@ -66,7 +66,7 @@ src/
   data/                Central mock data (single source of truth for every number)
   lib/
     api/               Resource layer + demo transport (swap point for real backends)
-    ai/                FadHype AI engine (swap point for a model API)
+    ai/                Festro AI engine (swap point for a model API)
     auth.ts, nav.ts, format.ts, site.ts, utils.ts
   hooks/               useResource, useCountUp, useStoredState, useHotkey
   styles/              globals.css (tokens, themes, motion, print)

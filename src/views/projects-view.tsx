@@ -149,7 +149,7 @@ export function ProjectsView() {
     <div className="space-y-6">
       <PageHeader
         title="Projects"
-        description="Selected work from the FadHype studio: what we built, and what it returned."
+        description="Selected work from the Festro studio: what we built, and what it returned."
         actions={
           <div className="grid grid-cols-2 gap-2 sm:flex">
             <NativeSelect aria-label="Filter by industry" value={industry} onChange={(e) => setIndustry(e.target.value)} className="sm:w-44">

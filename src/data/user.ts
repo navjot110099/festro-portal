@@ -5,7 +5,9 @@ import type { CurrentUser, TeamMember } from "@/types";
  * Never ship real credentials in client code; this account only unlocks mock data.
  */
 export const demoAccount = {
-  email: "deep@fadhype.com",
+  email: "deep@festro.com",
+  /** Earlier login email (pre-rebrand), still accepted. */
+  aliases: ["deep@fadhype.com"],
   password: "growth2026",
 } as const;
 
@@ -20,14 +22,14 @@ export const currentUser: CurrentUser = {
   plan: "Growth Partner",
 };
 
-/** The FadHype team assigned to this workspace. */
+/** The Festro team assigned to this workspace. */
 export const team: TeamMember[] = [
-  { id: "tm_deep", name: "Deep", role: "Owner", initials: "D", hue: 348, email: "deep@fadhype.com" },
-  { id: "tm_aanya", name: "Aanya Kapoor", role: "Growth Strategist", initials: "AK", hue: 18, email: "aanya@fadhype.com" },
-  { id: "tm_marcus", name: "Marcus Bell", role: "Paid Media Lead", initials: "MB", hue: 214, email: "marcus@fadhype.com" },
-  { id: "tm_sofia", name: "Sofia Marín", role: "SEO & Content Lead", initials: "SM", hue: 160, email: "sofia@fadhype.com" },
-  { id: "tm_ethan", name: "Ethan Cole", role: "Web Engineer", initials: "EC", hue: 266, email: "ethan@fadhype.com" },
-  { id: "tm_priya", name: "Priya Nair", role: "Account Manager", initials: "PN", hue: 38, email: "priya@fadhype.com" },
+  { id: "tm_deep", name: "Deep", role: "Owner", initials: "D", hue: 348, email: "deep@festro.com" },
+  { id: "tm_aanya", name: "Aanya Kapoor", role: "Growth Strategist", initials: "AK", hue: 18, email: "aanya@festro.com" },
+  { id: "tm_marcus", name: "Marcus Bell", role: "Paid Media Lead", initials: "MB", hue: 214, email: "marcus@festro.com" },
+  { id: "tm_sofia", name: "Sofia Marín", role: "SEO & Content Lead", initials: "SM", hue: 160, email: "sofia@festro.com" },
+  { id: "tm_ethan", name: "Ethan Cole", role: "Web Engineer", initials: "EC", hue: 266, email: "ethan@festro.com" },
+  { id: "tm_priya", name: "Priya Nair", role: "Account Manager", initials: "PN", hue: 38, email: "priya@festro.com" },
 ];
 
 export const accountManager = team.find((m) => m.id === "tm_priya")!;

@@ -24,10 +24,10 @@ export async function signIn({ email, password, remember }: { email: string; pas
   // Simulated network + verification latency so the loading state is visible.
   await sleep(1100);
 
-  const ok =
-    email.trim().toLowerCase() === demoAccount.email.toLowerCase() && password === demoAccount.password;
-  if (!ok) {
-    throw new AuthError("Those details don't match our records. Use the demo credentials below to explore.");
+  const id = email.trim().toLowerCase();
+  const knownEmail = [demoAccount.email, ...demoAccount.aliases].some((e) => e.toLowerCase() === id);
+  if (!knownEmail || password !== demoAccount.password) {
+    throw new AuthError("Those details don't match our records. Check your email and password and try again.");
   }
 
   const maxAge = remember ? `; max-age=${REMEMBER_DAYS * 24 * 60 * 60}` : "";

@@ -32,7 +32,7 @@ function exportCsv(leads: Lead[]) {
   const rows = leads.map((l) => [l.name, l.title, l.company, l.email, l.source, l.status, l.score, l.value, getMember(l.assignedTo)?.name ?? "", l.lastActivity].map(esc).join(","));
   const blob = new Blob([[header.join(","), ...rows].join("\n")], { type: "text/csv;charset=utf-8" });
   const url = URL.createObjectURL(blob);
-  const a = Object.assign(document.createElement("a"), { href: url, download: "fadhype-leads.csv" });
+  const a = Object.assign(document.createElement("a"), { href: url, download: "festro-leads.csv" });
   a.click();
   URL.revokeObjectURL(url);
 }

@@ -134,7 +134,7 @@ function ProductGlimpse() {
           </span>
           <div className="leading-tight">
             <p className="text-[11.5px] font-medium text-ivory">3 growth opportunities</p>
-            <p className="text-[10.5px] text-ivory/50">FadHype AI · ≈ +$5.9K</p>
+            <p className="text-[10.5px] text-ivory/50">Festro AI · ≈ +$5.9K</p>
           </div>
         </div>
       </motion.div>
@@ -166,7 +166,7 @@ export function BrandPanel() {
       <Atmosphere />
 
       <div className="relative flex items-center justify-between">
-        <Logo tone="light" />
+        <Logo tone="light" size="lg" />
         <span className="hidden rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[11.5px] font-medium tracking-wide text-ivory/70 sm:inline-block">
           Client platform
         </span>
@@ -175,7 +175,7 @@ export function BrandPanel() {
       <div className="relative mx-auto flex w-full max-w-xl flex-1 flex-col justify-center pt-7 sm:pt-10 lg:pt-0">
         <p className="animate-rise flex items-center gap-2 text-[12px] font-medium tracking-[0.14em] text-[#e7b8c2]/80 uppercase">
           <span className="h-px w-6 bg-[#e7b8c2]/50" aria-hidden />
-          FadHype Digital Growth Portal
+          Festro Digital Growth Portal
         </p>
         <h1
           id="brand-heading"
@@ -198,7 +198,7 @@ export function BrandPanel() {
       </div>
 
       <div className="relative mx-auto mt-10 hidden w-full max-w-xl sm:block lg:mt-6">
-        <h2 className="sr-only">What FadHype delivers</h2>
+        <h2 className="sr-only">What Festro delivers</h2>
         <ul className="flex flex-wrap gap-x-2 gap-y-2">
           {capabilities.map((c, i) => (
             <li key={c} style={{ animationDelay: `${500 + i * 50}ms` }} className="animate-rise rounded-full border border-white/10 bg-white/[0.035] px-3 py-1 text-[12px] text-ivory/70">

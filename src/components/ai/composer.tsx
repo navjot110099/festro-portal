@@ -38,7 +38,7 @@ export function Composer({
       className="rounded-2xl border border-line bg-surface p-2 shadow-sm transition-[border-color,box-shadow] focus-within:border-accent/40 focus-within:shadow-md focus-within:ring-4 focus-within:ring-accent-soft"
     >
       <label htmlFor={id} className="sr-only">
-        Message FadHype AI
+        Message Festro AI
       </label>
       <div className="flex items-end gap-2">
         <textarea

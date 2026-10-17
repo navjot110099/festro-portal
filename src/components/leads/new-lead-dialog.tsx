@@ -67,7 +67,7 @@ export function NewLeadDialog({ open, onOpenChange, onCreate }: { open: boolean;
       lastActivity: now,
       createdAt: now,
       interest: form.interest,
-      insight: "New lead. FadHype AI will score intent once activity is recorded.",
+      insight: "New lead. Festro AI will score intent once activity is recorded.",
       activity: [{ id: uid("act"), type: "created", title: "Lead created manually", at: now, by: "Deep" }],
     });
     setSaving(false);

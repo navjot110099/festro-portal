@@ -72,7 +72,7 @@ export function TasksView() {
     <div className="space-y-6">
       <PageHeader
         title="Tasks"
-        description="Your delivery board: what your FadHype team is working on, and what needs your approval."
+        description="Your delivery board: what your Festro team is working on, and what needs your approval."
         actions={
           <>
             <Segmented
@@ -161,7 +161,7 @@ export function TasksView() {
         }
         empty={{
           title: "No tasks yet",
-          description: "Create the first task, or ask FadHype AI to turn recommendations into work.",
+          description: "Create the first task, or ask Festro AI to turn recommendations into work.",
           icon: SquareKanban,
           action: (
             <Button size="sm" onClick={() => setNewOpen(true)}>

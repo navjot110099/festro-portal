@@ -1,14 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
-import { ArrowRight, Check, Copy, Eye, EyeOff, KeyRound, Lock, Mail } from "lucide-react";
+import { ArrowRight, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Modal } from "@/components/ui/dialog";
 import { Field, Input } from "@/components/ui/input";
-import { demoAccount } from "@/data/user";
 import { AuthError, requestPasswordReset, signIn } from "@/lib/auth";
 import { sleep } from "@/lib/utils";
 
@@ -69,23 +68,6 @@ export function LoginForm() {
       shake();
       window.setTimeout(() => passwordRef.current?.select(), 0);
     }
-  };
-
-  /** Types the demo credentials in, so reviewers see the flow rather than a jump. */
-  const fillDemo = async () => {
-    setError(null);
-    setFieldErrors({});
-    setEmail("");
-    setPassword("");
-    for (let i = 1; i <= demoAccount.email.length; i++) {
-      setEmail(demoAccount.email.slice(0, i));
-      await sleep(14);
-    }
-    for (let i = 1; i <= demoAccount.password.length; i++) {
-      setPassword(demoAccount.password.slice(0, i));
-      await sleep(20);
-    }
-    passwordRef.current?.focus();
   };
 
   const busy = phase !== "idle";
@@ -219,49 +201,8 @@ export function LoginForm() {
         </Button>
       </form>
 
-      <DemoAccess onUse={fillDemo} disabled={busy} />
 
       <ForgotPasswordDialog open={forgotOpen} onOpenChange={setForgotOpen} defaultEmail={email} />
-    </div>
-  );
-}
-
-function DemoAccess({ onUse, disabled }: { onUse: () => void; disabled: boolean }) {
-  const [copied, setCopied] = useState(false);
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(`${demoAccount.email} / ${demoAccount.password}`);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      /* clipboard blocked; credentials remain visible */
-    }
-  };
-  return (
-    <div style={{ animationDelay: "250ms" }} className="animate-rise mt-8 rounded-xl border border-dashed border-line-strong bg-surface-2/70 p-4">
-      <div className="flex items-start gap-3">
-        <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-accent-soft text-accent-ink">
-          <KeyRound className="size-4" aria-hidden />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-[13px] font-medium text-fg">Demo access</p>
-          <p className="mt-0.5 text-[12.5px] text-muted">Explore the full portal with illustrative data.</p>
-          <dl className="mt-2.5 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 font-mono text-[12px]">
-            <dt className="text-subtle">email</dt>
-            <dd className="truncate text-fg-2">{demoAccount.email}</dd>
-            <dt className="text-subtle">pass</dt>
-            <dd className="text-fg-2">{demoAccount.password}</dd>
-          </dl>
-        </div>
-      </div>
-      <div className="mt-3.5 flex gap-2">
-        <Button variant="secondary" size="sm" className="flex-1" onClick={onUse} disabled={disabled}>
-          Use demo account
-        </Button>
-        <Button variant="ghost" size="icon-sm" onClick={copy} aria-label={copied ? "Copied" : "Copy demo credentials"}>
-          {copied ? <Check className="text-success" /> : <Copy />}
-        </Button>
-      </div>
     </div>
   );
 }

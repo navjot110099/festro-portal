@@ -48,7 +48,7 @@ export const navGroups: NavGroup[] = [
     id: "growth",
     label: "Growth",
     items: [
-      { href: "/ai", label: "AI Mode", icon: Sparkles, description: "FadHype AI growth assistant", primary: true, badge: "AI" },
+      { href: "/ai", label: "AI Mode", icon: Sparkles, description: "Festro AI growth assistant", primary: true, badge: "AI" },
       { href: "/seo", label: "SEO & GEO", icon: Radar, description: "Search and AI visibility" },
       { href: "/campaigns", label: "Campaigns", icon: Megaphone, description: "Paid, organic and email campaigns" },
     ],
@@ -57,7 +57,7 @@ export const navGroups: NavGroup[] = [
     id: "operations",
     label: "Operations",
     items: [
-      { href: "/services", label: "Services", icon: Layers, description: "Your FadHype growth stack" },
+      { href: "/services", label: "Services", icon: Layers, description: "Your Festro growth stack" },
       { href: "/projects", label: "Projects", icon: BriefcaseBusiness, description: "Portfolio and client work" },
       { href: "/tasks", label: "Tasks", icon: SquareKanban, description: "Workflow and delivery board" },
       { href: "/reports", label: "Reports", icon: FileChartColumn, description: "Client report center" },

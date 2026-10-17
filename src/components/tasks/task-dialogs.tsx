@@ -142,7 +142,7 @@ export function NewTaskDialog({ open, onOpenChange, onCreate }: { open: boolean;
       open={open}
       onOpenChange={change}
       title="New task"
-      description="Add work to the board. Your FadHype team is notified automatically."
+      description="Add work to the board. Your Festro team is notified automatically."
       footer={
         <>
           <Button variant="ghost" onClick={() => change(false)}>

@@ -71,7 +71,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
           {
             id: "ask",
             group: "Ask AI",
-            label: `Ask FadHype AI: “${query.trim()}”`,
+            label: `Ask Festro AI: “${query.trim()}”`,
             icon: Sparkles,
             run: () => {
               router.push(`/ai?q=${encodeURIComponent(query.trim())}`);
@@ -132,7 +132,7 @@ export function CommandPalette({ open, onOpenChange }: { open: boolean; onOpenCh
                 className="fixed top-[12vh] left-1/2 z-[81] w-[calc(100vw-24px)] max-w-xl -translate-x-1/2 overflow-hidden rounded-2xl border border-line bg-surface shadow-lg"
               >
                 <Dialog.Title className="sr-only">Command menu</Dialog.Title>
-                <Dialog.Description className="sr-only">Search pages and actions, or ask FadHype AI.</Dialog.Description>
+                <Dialog.Description className="sr-only">Search pages and actions, or ask Festro AI.</Dialog.Description>
                 <div className="flex items-center gap-3 border-b border-line px-4">
                   <Search className="size-4 shrink-0 text-subtle" aria-hidden />
                   <input

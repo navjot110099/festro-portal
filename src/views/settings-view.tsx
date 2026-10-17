@@ -129,7 +129,7 @@ export function SettingsView() {
         <TabsContent value="profile" className="mt-6 space-y-4 outline-none">
           <Section
             title="Profile"
-            description="How you appear to your FadHype team."
+            description="How you appear to your Festro team."
             footer={
               <Button onClick={() => save("Your profile was updated.")} loading={saving}>
                 Save profile
@@ -205,7 +205,7 @@ export function SettingsView() {
                     <p className="truncate text-[13.5px] font-medium text-fg">{m.name}</p>
                     <p className="truncate text-[12px] text-muted">{m.email}</p>
                   </div>
-                  <Badge tone={m.id === "tm_deep" ? "brand" : "neutral"}>{m.id === "tm_deep" ? "Owner" : "FadHype team"}</Badge>
+                  <Badge tone={m.id === "tm_deep" ? "brand" : "neutral"}>{m.id === "tm_deep" ? "Owner" : "Festro team"}</Badge>
                 </li>
               ))}
             </ul>
@@ -258,7 +258,7 @@ export function SettingsView() {
               })}
             </div>
           </Section>
-          <Section title="Motion" description="FadHype respects your system's reduced-motion setting automatically.">
+          <Section title="Motion" description="Festro respects your system's reduced-motion setting automatically.">
             <ToggleRow
               title="Reduce motion"
               description="Turn off count-ups, chart animations and decorative movement in this browser."
@@ -283,7 +283,7 @@ export function SettingsView() {
           >
             <div className="divide-y divide-line">
               <ToggleRow title="New qualified leads" description="Instant alert when a lead scores 80 or higher." checked={notify.leads} onChange={(v) => setNotify((n) => ({ ...n, leads: v }))} />
-              <ToggleRow title="AI growth opportunities" description="When FadHype AI finds an opportunity worth more than $500." checked={notify.ai} onChange={(v) => setNotify((n) => ({ ...n, ai: v }))} />
+              <ToggleRow title="AI growth opportunities" description="When Festro AI finds an opportunity worth more than $500." checked={notify.ai} onChange={(v) => setNotify((n) => ({ ...n, ai: v }))} />
               <ToggleRow title="Campaign anomalies" description="Spend spikes, ROAS drops, or disapproved ads." checked={notify.anomalies} onChange={(v) => setNotify((n) => ({ ...n, anomalies: v }))} />
               <ToggleRow title="Reports ready" description="When a scheduled or requested report is generated." checked={notify.reports} onChange={(v) => setNotify((n) => ({ ...n, reports: v }))} />
               <ToggleRow title="Weekly digest" description="A Monday summary of performance and next actions." checked={notify.digest} onChange={(v) => setNotify((n) => ({ ...n, digest: v }))} />
@@ -293,7 +293,7 @@ export function SettingsView() {
         </TabsContent>
 
         <TabsContent value="integrations" className="mt-6 space-y-4 outline-none">
-          <Section title="Integrations" description="Read-only connections that power dashboards, reports and FadHype AI.">
+          <Section title="Integrations" description="Read-only connections that power dashboards, reports and Festro AI.">
             <AsyncView
               status={integrations.status}
               data={integrations.data}

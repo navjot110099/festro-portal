@@ -1,8 +1,8 @@
 {
-  "name": "fadhype-portal",
+  "name": "festro-portal",
   "version": "1.0.0",
   "private": true,
-  "description": "FadHype Digital Growth Portal — a premium client operating system for digital growth.",
+  "description": "Festro Digital Growth Portal — a premium client operating system for digital growth.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

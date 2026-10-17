@@ -165,7 +165,7 @@ export function AiView() {
             <AiOrb size="md" active={generating} />
             <div className="min-w-0">
               <h1 id="ai-title" className="text-[15px] font-semibold tracking-tight text-fg">
-                FadHype AI
+                Festro AI
               </h1>
               <p className="truncate text-[12px] text-muted">Your intelligent growth assistant.</p>
             </div>
@@ -215,7 +215,7 @@ export function AiView() {
                     )}
                     {t.status === "error" && (
                       <div className="rounded-xl border border-line bg-surface-2/50">
-                        <ErrorState compact title="FadHype AI couldn't answer" error={new Error(t.error)} onRetry={() => regenerate(t)} />
+                        <ErrorState compact title="Festro AI couldn't answer" error={new Error(t.error)} onRetry={() => regenerate(t)} />
                       </div>
                     )}
                     {t.status === "ready" && t.response && (
@@ -252,7 +252,7 @@ export function AiView() {
           )}
           <div className="mx-auto max-w-3xl">
             <Composer value={draft} onChange={setDraft} onSubmit={() => ask(draft)} onStop={stop} generating={generating} />
-            <p className="mt-2 text-center text-[11px] text-subtle">FadHype AI uses your connected data. Responses in this demo are illustrative.</p>
+            <p className="mt-2 text-center text-[11px] text-subtle">Festro AI uses your connected data. Responses in this demo are illustrative.</p>
           </div>
         </div>
       </Card>
