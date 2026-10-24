@@ -60,7 +60,7 @@ export function Composer({
               }
             }
           }}
-          placeholder="Ask about revenue, leads, campaigns, SEO…"
+          placeholder="Ask about revenue, leads, SEO…"
           className="max-h-42 min-h-11 flex-1 resize-none bg-transparent px-3 py-2.5 text-[14px] leading-relaxed text-fg outline-none placeholder:text-subtle focus-visible:outline-none"
         />
         {generating ? (
