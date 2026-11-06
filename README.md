@@ -78,7 +78,12 @@ npm run lint
 npm run typecheck
 ```
 
-Requires Node 20+. Set `NEXT_PUBLIC_SITE_URL` to your production domain so canonical URLs, the sitemap and structured data use it. On Vercel, the project's production URL is used automatically.
+Requires Node 20+. Optional environment variables:
+
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Your production domain, used for canonical URLs, the sitemap and structured data. On Vercel, the project's production URL is used automatically. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Public contact address added to the Organization structured data. Omitted when unset. |
 
 ---
 
@@ -157,4 +162,4 @@ The same pattern works for Supabase/PostgreSQL, a CRM (HubSpot), analytics (GA4,
 
 ## Placeholder data
 
-All people, companies, figures and case studies are realistic placeholders. Email addresses use the reserved `.example` domain and phone numbers use the 555 range, so nothing can reach a real person. No API keys or secrets are committed; `.env*.local` and `.vercel/` are git-ignored.
+All people, companies, figures and case studies are realistic placeholders. Lead and client email addresses use the reserved `.example` domain and phone numbers use the 555 range, so nothing can reach a real person. Festro team addresses (`@festro.com`) are shown as profile details only; the portal never links to or sends email to them. No API keys or secrets are committed; `.env*` files and `.vercel/` are git-ignored.

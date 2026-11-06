@@ -17,7 +17,8 @@ export const site = {
   shortDescription: "Growth, technology and digital systems engineered for modern businesses.",
   url: resolveSiteUrl(),
   locale: "en_US",
-  email: "hello@festro.com",
+  /** Public contact address for structured data. Left out unless configured, so the site never advertises an inbox nobody reads. */
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || undefined,
   keywords: [
     "digital growth agency",
     "digital marketing",
