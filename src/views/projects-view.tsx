@@ -128,7 +128,7 @@ function CaseStudy({ project, open, onOpenChange }: { project: Project | null; o
         </div>
         <p className="flex items-start gap-2 rounded-lg border border-dashed border-line-strong p-3 text-[12px] text-muted">
           <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-          Illustrative case study created for this demonstration portfolio. Brand names and figures are examples, not real client results.
+          Example case study. Brand names and figures are illustrative.
         </p>
       </div>
     </Modal>
@@ -171,7 +171,7 @@ export function ProjectsView() {
       <div className="flex items-start gap-3 rounded-xl border border-line bg-surface-2/60 px-4 py-3 text-[12.5px] text-muted">
         <Info className="mt-0.5 size-4 shrink-0 text-subtle" aria-hidden />
         <p>
-          <span className="font-medium text-fg-2">Demonstration portfolio.</span> The brands and results shown are illustrative examples created for this showcase, not real client engagements.
+          <span className="font-medium text-fg-2">Example case studies.</span> Brands and results are illustrative, showing the kind of work and reporting Festro delivers.
         </p>
       </div>
 

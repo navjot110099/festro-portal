@@ -42,10 +42,10 @@ export function RevenuePanel() {
     <Card as="section" aria-labelledby="perf-title" className="h-full overflow-hidden">
       <div className="flex flex-wrap items-start justify-between gap-4 px-5 pt-5">
         <div>
-          <h2 id="perf-title" className="text-[14.5px] font-semibold tracking-tight text-fg">
+          <h2 id="perf-title" className="text-title font-semibold tracking-tight text-fg">
             Performance
           </h2>
-          <p className="mt-0.5 text-[12.5px] text-muted">{rangeLabel[range]} · compared with {compareLabel[range].toLowerCase()}</p>
+          <p className="mt-0.5 text-caption text-muted">{rangeLabel[range]} · compared with {compareLabel[range].toLowerCase()}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Segmented

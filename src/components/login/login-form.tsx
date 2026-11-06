@@ -1,14 +1,16 @@
 "use client";
 
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
-import { ArrowRight, Check, Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { ArrowRight, Check, Eye, EyeOff, LoaderCircle, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useId, useRef, useState } from "react";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Modal } from "@/components/ui/dialog";
 import { Field, Input } from "@/components/ui/input";
-import { AuthError, requestPasswordReset, signIn } from "@/lib/auth";
+import { currentUser } from "@/data/user";
+import { AuthError, requestPasswordReset, signIn, signInWithSavedAccount } from "@/lib/auth";
 import { sleep } from "@/lib/utils";
 
 type Phase = "idle" | "submitting" | "success";
@@ -26,6 +28,8 @@ export function LoginForm() {
   const [remember, setRemember] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
+  /** Which control started the current sign-in, so only that one shows progress. */
+  const [via, setVia] = useState<"form" | "quick">("form");
   const [error, setError] = useState<string | null>(null);
   const [formScope, animateForm] = useAnimate<HTMLFormElement>();
   const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
@@ -55,6 +59,7 @@ export function LoginForm() {
       shake();
       return;
     }
+    setVia("form");
     setPhase("submitting");
     try {
       await signIn({ email, password, remember });
@@ -70,7 +75,26 @@ export function LoginForm() {
     }
   };
 
+  const onQuickSignIn = async () => {
+    if (phase !== "idle") return;
+    setError(null);
+    setFieldErrors({});
+    setVia("quick");
+    setPhase("submitting");
+    try {
+      await signInWithSavedAccount(remember);
+      setPhase("success");
+      await sleep(450);
+      router.replace(safeNext());
+      router.refresh();
+    } catch {
+      setPhase("idle");
+      setError("We couldn't sign you in. Please try again.");
+    }
+  };
+
   const busy = phase !== "idle";
+  const formBusy = busy && via === "form";
 
   return (
     <div className="w-full max-w-[400px]">
@@ -172,12 +196,12 @@ export function LoginForm() {
 
         <Button type="submit" size="lg" className="group w-full overflow-hidden" disabled={busy} aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
-            {phase === "idle" && (
+            {(phase === "idle" || via === "quick") && (
               <motion.span key="idle" className="inline-flex items-center gap-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
                 Sign in <ArrowRight className="transition-transform duration-300 group-hover:translate-x-0.5" />
               </motion.span>
             )}
-            {phase === "submitting" && (
+            {formBusy && phase === "submitting" && (
               <motion.span key="submitting" className="inline-flex items-center gap-2.5" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}>
                 <span className="flex gap-1" aria-hidden>
                   {[0, 1, 2].map((i) => (
@@ -192,7 +216,7 @@ export function LoginForm() {
                 Verifying
               </motion.span>
             )}
-            {phase === "success" && (
+            {formBusy && phase === "success" && (
               <motion.span key="success" className="inline-flex items-center gap-2" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
                 <Check /> Welcome, Deep
               </motion.span>
@@ -201,6 +225,37 @@ export function LoginForm() {
         </Button>
       </form>
 
+      <div className="mt-6 space-y-3">
+        <div className="flex items-center gap-3 text-caption text-subtle" aria-hidden>
+          <span className="h-px flex-1 bg-line" />
+          or continue with a saved account
+          <span className="h-px flex-1 bg-line" />
+        </div>
+        <button
+          type="button"
+          onClick={onQuickSignIn}
+          disabled={busy}
+          aria-label={`Continue as ${currentUser.name}, ${currentUser.workspace}`}
+          className="group flex w-full items-center gap-3 rounded-xl border border-line bg-surface p-3 text-left shadow-xs transition-[border-color,box-shadow,transform] duration-200 hover:border-line-strong hover:shadow-sm active:scale-[0.99] disabled:opacity-60"
+        >
+          <Avatar initials={currentUser.initials} hue={348} size="md" />
+          <span className="min-w-0 flex-1">
+            <span className="block text-body font-medium text-fg">Continue as {currentUser.name}</span>
+            <span className="block truncate text-caption text-muted">
+              {currentUser.workspace} · {currentUser.role}
+            </span>
+          </span>
+          <span className="grid size-8 shrink-0 place-items-center rounded-lg text-muted transition-colors group-hover:bg-surface-2 group-hover:text-fg" aria-hidden>
+            {via === "quick" && phase === "submitting" ? (
+              <LoaderCircle className="size-4 animate-spin" />
+            ) : via === "quick" && phase === "success" ? (
+              <Check className="size-4 text-success" />
+            ) : (
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+            )}
+          </span>
+        </button>
+      </div>
 
       <ForgotPasswordDialog open={forgotOpen} onOpenChange={setForgotOpen} defaultEmail={email} />
     </div>
@@ -246,7 +301,6 @@ function ForgotPasswordDialog({ open, onOpenChange, defaultEmail }: { open: bool
                 If an account exists for <span className="font-medium text-fg">{email}</span>, a reset link is on its way. It expires in 30 minutes.
               </p>
             </div>
-            <p className="text-[12px] text-subtle">Demo environment: no email is actually sent.</p>
             <Button className="w-full" variant="secondary" onClick={() => change(false)}>
               Back to sign in
             </Button>

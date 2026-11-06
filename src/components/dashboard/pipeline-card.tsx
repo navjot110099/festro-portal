@@ -22,7 +22,7 @@ export function PipelineCard() {
         title="Lead pipeline"
         description="Last 90 days, by furthest stage reached"
         action={
-          <Link href="/leads" className="inline-flex items-center gap-1 text-[12.5px] font-medium text-accent-ink hover:underline">
+          <Link href="/leads" className="inline-flex items-center gap-1 text-caption font-medium text-accent-ink hover:underline">
             View leads <ArrowRight className="size-3.5" aria-hidden />
           </Link>
         }
@@ -54,17 +54,19 @@ export function PipelineCard() {
               { id: "proposal", label: "Proposal sent", value: s.byStatus.proposal },
               { id: "converted", label: "Converted", value: s.byStatus.converted },
             ];
+            const qualifiedToClient = s.byStatus.qualified ? s.byStatus.converted / s.byStatus.qualified : 0;
             return (
+              <>
               <ol className="space-y-3.5">
                 {stages.map((stage, i) => {
                   const pct = stage.value / s.total;
                   const step = i > 0 ? stage.value / stages[i - 1].value : null;
                   return (
                     <li key={stage.id}>
-                      <div className="mb-1.5 flex items-baseline justify-between gap-2 text-[12.5px]">
+                      <div className="mb-1.5 flex items-baseline justify-between gap-2 text-caption">
                         <span className="text-fg-2">{stage.label}</span>
                         <span className="flex items-baseline gap-2">
-                          {step !== null && <span className="text-[11.5px] text-subtle tabular">{formatPercent(step, 0)} of prior</span>}
+                          {step !== null && <span className="text-micro text-subtle tabular">{formatPercent(step, 0)} of prior</span>}
                           <span className="font-semibold text-fg tabular">{formatNumber(stage.value)}</span>
                         </span>
                       </div>
@@ -81,13 +83,14 @@ export function PipelineCard() {
                   );
                 })}
               </ol>
+              <div className="mt-5 flex items-center justify-between rounded-xl bg-surface-2 px-3.5 py-2.5 text-caption">
+                <span className="text-muted">Qualified → client</span>
+                <span className="font-semibold text-fg tabular">{formatPercent(qualifiedToClient)}</span>
+              </div>
+              </>
             );
           }}
         </AsyncView>
-      </div>
-      <div className="mx-5 mb-5 flex items-center justify-between rounded-xl bg-surface-2 px-3.5 py-2.5 text-[12.5px]">
-        <span className="text-muted">Qualified → client</span>
-        <span className="font-semibold text-fg">8.7%</span>
       </div>
     </Card>
   );

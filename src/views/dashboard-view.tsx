@@ -45,9 +45,9 @@ function InsightBanner({ title, detail }: { title: string; detail: string }) {
                 <Sparkles className="size-[18px]" aria-hidden />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="text-[11.5px] font-semibold tracking-[0.08em] text-accent-ink uppercase">Festro AI · this week</p>
-                <p className="mt-0.5 text-[14.5px] font-semibold text-fg">{title}</p>
-                <p className="mt-0.5 text-[13px] leading-relaxed text-muted">{detail}</p>
+                <p className="text-micro font-semibold tracking-[0.08em] text-accent-ink uppercase">Festro AI · this week</p>
+                <p className="mt-0.5 text-title font-semibold text-fg">{title}</p>
+                <p className="mt-0.5 text-body leading-relaxed text-muted">{detail}</p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 <Button asChild size="md">
@@ -72,14 +72,24 @@ export function DashboardView() {
   const overview = useResource(() => api.dashboard.overview());
   const hello = useClientValue(() => greeting(), "Good morning");
   const today = useClientValue(() => new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" }), "");
+  const hasData = overview.status === "success" && Boolean(overview.data?.primary.length);
+  // The sync line reflects what actually loaded, never a fixed "all good".
+  const sync =
+    overview.status === "loading"
+      ? { dot: "bg-subtle animate-pulse-soft", text: "Syncing your sources" }
+      : overview.status === "error"
+        ? { dot: "bg-danger", text: "Some sources aren't responding" }
+        : hasData
+          ? { dot: "bg-success", text: "All sources synced" }
+          : { dot: "bg-subtle", text: "No data sources connected" };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-5">
       <PageHeader
         eyebrow={
           <>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="size-1.5 rounded-full bg-success" aria-hidden /> All sources synced
+            <span className="inline-flex items-center gap-1.5" role="status">
+              <span className={`size-1.5 rounded-full ${sync.dot}`} aria-hidden /> {sync.text}
             </span>
             {today && (
               <>
@@ -101,6 +111,7 @@ export function DashboardView() {
           <>
             <Button
               variant="secondary"
+              disabled={!hasData}
               onClick={() => toast({ title: "Export started", description: "A CSV of this overview will be ready in Reports shortly.", tone: "info" })}
             >
               <Download /> Export
@@ -134,13 +145,13 @@ export function DashboardView() {
         <>
           <section aria-label="Key metrics">
             {overview.status === "loading" ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+              <div className="space-y-4 lg:space-y-5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 xl:grid-cols-4">
                   {[0, 1, 2, 3].map((i) => (
                     <KpiCardSkeleton key={i} />
                   ))}
                 </div>
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
                   {[0, 1, 2, 3].map((i) => (
                     <KpiCardSkeleton key={i} variant="compact" />
                   ))}
@@ -148,15 +159,15 @@ export function DashboardView() {
               </div>
             ) : (
               overview.data && (
-                <div className="space-y-4">
-                  <Stagger className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+                <div className="space-y-4 lg:space-y-5">
+                  <Stagger className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5 xl:grid-cols-4">
                     {overview.data.primary.map((kpi, i) => (
                       <StaggerItem key={kpi.id}>
                         <KpiCard kpi={kpi} index={i} />
                       </StaggerItem>
                     ))}
                   </Stagger>
-                  <Stagger className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
+                  <Stagger className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
                     {overview.data.secondary.map((kpi, i) => (
                       <StaggerItem key={kpi.id}>
                         <KpiCard kpi={kpi} index={i + 4} variant="compact" />
@@ -172,20 +183,20 @@ export function DashboardView() {
         </>
       )}
 
-      <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:gap-5 xl:grid-cols-3">
         <div className="xl:col-span-2">
           <RevenuePanel />
         </div>
         <PipelineCard />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5 xl:grid-cols-3">
         <TopCampaignsCard />
         <ChannelMixCard />
-        <ActivityCard />
+        <ActivityCard className="lg:col-span-2 xl:col-span-1" />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-5">
         <PriorityTasksCard />
         <VisibilityCard />
       </div>

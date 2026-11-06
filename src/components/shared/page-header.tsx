@@ -16,7 +16,7 @@ export function PageHeader({
   return (
     <header className={cn("flex flex-col gap-4 md:flex-row md:items-end md:justify-between", className)}>
       <div className="min-w-0">
-        {eyebrow && <div className="mb-2 flex items-center gap-2 text-[12px] font-medium text-muted">{eyebrow}</div>}
+        {eyebrow && <div className="mb-2 flex items-center gap-2 text-caption font-medium text-muted">{eyebrow}</div>}
         <h1 className="text-[26px] leading-[1.15] font-semibold tracking-[-0.025em] text-fg sm:text-[28px]">{title}</h1>
         {description && <p className="mt-1.5 max-w-2xl text-[14px] text-muted">{description}</p>}
       </div>
@@ -32,7 +32,7 @@ export function SectionTitle({ title, description, action, id }: { title: string
         <h2 id={id} className="text-[15px] font-semibold tracking-tight text-fg">
           {title}
         </h2>
-        {description && <p className="mt-0.5 text-[12.5px] text-muted">{description}</p>}
+        {description && <p className="mt-0.5 text-caption text-muted">{description}</p>}
       </div>
       {action}
     </div>

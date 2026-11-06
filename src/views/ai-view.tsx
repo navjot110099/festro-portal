@@ -252,7 +252,7 @@ export function AiView() {
           )}
           <div className="mx-auto max-w-3xl">
             <Composer value={draft} onChange={setDraft} onSubmit={() => ask(draft)} onStop={stop} generating={generating} />
-            <p className="mt-2 text-center text-[11px] text-subtle">Festro AI uses your connected data. Responses in this demo are illustrative.</p>
+            <p className="mt-2 text-center text-[11px] text-subtle">Festro AI reads your connected data. It never changes anything without your approval.</p>
           </div>
         </div>
       </Card>

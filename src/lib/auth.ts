@@ -1,4 +1,5 @@
 import { demoAccount, currentUser } from "@/data/user";
+import { setDemoMode } from "@/lib/api/client";
 import { sleep } from "@/lib/utils";
 
 /**
@@ -33,6 +34,16 @@ export async function signIn({ email, password, remember }: { email: string; pas
   const maxAge = remember ? `; max-age=${REMEMBER_DAYS * 24 * 60 * 60}` : "";
   document.cookie = `${SESSION_COOKIE}=${encodeURIComponent(currentUser.id)}; path=/; samesite=lax${maxAge}`;
   return currentUser;
+}
+
+/**
+ * One-click sign-in for the saved account shown on the sign-in page.
+ * Also resets the workspace to its full seeded data, in case Settings →
+ * Data states was left on "Empty workspace" or "Connection issues".
+ */
+export async function signInWithSavedAccount(remember = true) {
+  setDemoMode("live");
+  return signIn({ email: demoAccount.email, password: demoAccount.password, remember });
 }
 
 export async function requestPasswordReset(email: string) {

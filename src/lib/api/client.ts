@@ -51,10 +51,33 @@ interface RequestOptions<T> {
   latency?: number;
 }
 
+/** Plain-English names for endpoints, used in error messages people actually read. */
+const resourceNames: Record<string, string> = {
+  "/dashboard/overview": "your performance overview",
+  "/analytics/series": "your performance trends",
+  "/analytics/breakdown": "traffic and page analytics",
+  "/leads": "your leads",
+  "/leads/summary": "the lead pipeline",
+  "/campaigns": "campaign results",
+  "/campaigns/weekly": "weekly campaign performance",
+  "/seo/overview": "search visibility",
+  "/services": "your services",
+  "/projects": "projects",
+  "/tasks": "tasks",
+  "/activity": "recent activity",
+  "/reports/templates": "report templates",
+  "/reports": "recent reports",
+  "/support": "the help center",
+  "/integrations": "integrations",
+};
+
 export async function request<T>(path: string, resolve: () => T, { empty, latency = 650 }: RequestOptions<T>): Promise<T> {
   const mode = getDemoMode();
   await sleep(latency + Math.random() * 250);
-  if (mode === "error") throw new ApiError(`We couldn't load ${path.replace(/^\//, "").replace(/\//g, " › ")}. The data source didn't respond.`, 503);
+  if (mode === "error") {
+    const name = resourceNames[path.split("?")[0]] ?? "this data";
+    throw new ApiError(`We couldn't load ${name}. The data source didn't respond. Try again in a moment.`, 503);
+  }
   if (mode === "empty") return empty;
   return resolve();
 }

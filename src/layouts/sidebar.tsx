@@ -4,11 +4,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronsUpDown, PanelLeftClose, PanelLeftOpen, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSyncExternalStore } from "react";
 import { Logo, LogoMark } from "@/components/brand/logo";
 import { Tooltip } from "@/components/ui/tooltip";
 import { currentUser } from "@/data/user";
+import { DEMO_MODE_EVENT, getDemoMode, type DemoMode } from "@/lib/api/client";
 import { navGroups, utilityNav, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+
+function subscribeDemoMode(cb: () => void) {
+  window.addEventListener(DEMO_MODE_EVENT, cb);
+  return () => window.removeEventListener(DEMO_MODE_EVENT, cb);
+}
 
 export const SIDEBAR_EXPANDED = 264;
 export const SIDEBAR_COLLAPSED = 76;
@@ -110,7 +117,7 @@ export function WorkspaceCard({ collapsed }: { collapsed: boolean }) {
     .join("")
     .slice(0, 2);
   const badge = (
-    <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[linear-gradient(140deg,#3a5a7a,#22344a)] text-[11px] font-semibold text-white shadow-xs">{initials}</span>
+    <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-[#2e4762] bg-[linear-gradient(140deg,#3a5a7a,#22344a)] text-[11px] font-semibold text-white shadow-xs">{initials}</span>
   );
   if (collapsed) {
     return (
@@ -134,6 +141,8 @@ export function WorkspaceCard({ collapsed }: { collapsed: boolean }) {
 }
 
 function AiCard() {
+  const mode = useSyncExternalStore(subscribeDemoMode, getDemoMode, () => "live" as DemoMode);
+  if (mode !== "live") return null;
   return (
     <div className="relative overflow-hidden rounded-xl border border-line bg-[linear-gradient(160deg,var(--accent-soft),transparent_70%)] p-3.5">
       <div className="flex items-center gap-2 text-[12px] font-semibold text-accent-ink">

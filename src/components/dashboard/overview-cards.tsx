@@ -22,7 +22,7 @@ import { series } from "@/components/charts/chart-kit";
 
 function ViewAll({ href, label = "View all" }: { href: string; label?: string }) {
   return (
-    <Link href={href} className="inline-flex items-center gap-1 text-[12.5px] font-medium text-accent-ink hover:underline">
+    <Link href={href} className="inline-flex items-center gap-1 text-caption font-medium text-accent-ink hover:underline">
       {label} <ArrowRight className="size-3.5" aria-hidden />
     </Link>
   );
@@ -72,21 +72,21 @@ export function TopCampaignsCard() {
                   return (
                     <li key={c.id} className="flex items-center gap-3 py-2.5 first:pt-0 last:pb-0">
                       <span
-                        className="grid size-8 shrink-0 place-items-center rounded-lg text-[11px] font-semibold text-white"
+                        className="grid size-8 shrink-0 place-items-center rounded-lg text-micro font-semibold text-white"
                         style={{ background: series[meta.chart] }}
                         aria-hidden
                       >
                         {meta.short}
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-[13px] font-medium text-fg">{c.name}</p>
-                        <p className="text-[11.5px] text-muted">
+                        <p className="truncate text-body font-medium text-fg">{c.name}</p>
+                        <p className="text-micro text-muted">
                           {c.platform} · {c.conversions} conversions
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-[13px] font-semibold text-fg tabular">{formatCurrency(c.revenue)}</p>
-                        <p className="text-[11.5px] text-muted tabular">{roas ? `${roas.toFixed(1)}x ROAS` : "Organic"}</p>
+                        <p className="text-body font-semibold text-fg tabular">{formatCurrency(c.revenue)}</p>
+                        <p className="text-micro text-muted tabular">{roas ? `${roas.toFixed(1)}x ROAS` : "Organic"}</p>
                       </div>
                     </li>
                   );
@@ -138,18 +138,20 @@ export function ChannelMixCard() {
 
 /* -------------------------------------------------------------- Activity */
 
-export function ActivityCard() {
+export function ActivityCard({ className }: { className?: string }) {
   const res = useResource(() => api.activity.list());
   return (
-    <Card as="section" id="activity" aria-labelledby="activity-title" className="flex scroll-mt-24 flex-col">
+    <Card as="section" id="activity" aria-labelledby="activity-title" className={cn("flex scroll-mt-24 flex-col", className)}>
       <CardHeader
         titleId="activity-title"
         title="Activity"
         description="Across leads, campaigns, search and AI"
         action={
-          <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-success">
-            <span className="size-1.5 animate-pulse-soft rounded-full bg-success" aria-hidden /> Live
-          </span>
+          res.status === "success" && res.data && res.data.length > 0 ? (
+            <span className="inline-flex items-center gap-1.5 text-caption font-medium text-success">
+              <span className="size-1.5 animate-pulse-soft rounded-full bg-success" aria-hidden /> Live
+            </span>
+          ) : undefined
         }
       />
       <div className="flex-1 px-5 pt-4 pb-5">
@@ -204,8 +206,8 @@ export function PriorityTasksCard() {
                     <li key={t.id} className="flex items-center gap-3 rounded-xl border border-line bg-surface-2/40 px-3 py-2.5">
                       {owner && <Avatar initials={owner.initials} hue={owner.hue} size="sm" label={owner.name} />}
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-[13px] font-medium text-fg">{t.title}</p>
-                        <p className={cn("mt-0.5 flex items-center gap-1 text-[11.5px]", d <= 0 ? "text-danger" : d <= 2 ? "text-warning" : "text-muted")}>
+                        <p className="truncate text-body font-medium text-fg">{t.title}</p>
+                        <p className={cn("mt-0.5 flex items-center gap-1 text-micro", d <= 0 ? "text-danger" : d <= 2 ? "text-warning" : "text-muted")}>
                           <CalendarClock className="size-3" aria-hidden />
                           {d < 0 ? `${-d}d overdue` : d === 0 ? "Due today" : d === 1 ? "Due tomorrow" : `Due in ${d} days`}
                         </p>
@@ -254,12 +256,12 @@ export function VisibilityCard() {
                 ].map((s) => (
                   <div key={s.label} className="flex flex-col items-center rounded-xl bg-surface-2/60 px-2 py-4">
                     <ScoreRing value={s.score} label={s.label} size={108} stroke={8} tone={s.tone} />
-                    <p className="mt-2.5 text-[12.5px] font-medium text-fg-2">{s.label}</p>
+                    <p className="mt-2.5 text-caption font-medium text-fg-2">{s.label}</p>
                     <Delta change={s.change} kind="absolute" size="xs" className="mt-0.5" />
                   </div>
                 ))}
               </div>
-              <p className="mt-4 text-[12.5px] leading-relaxed text-muted">
+              <p className="mt-4 text-caption leading-relaxed text-muted">
                 <span className="font-medium text-fg-2">Next best move:</span> publish an on-location vs studio comparison page to win a prompt where you&apos;re absent.
               </p>
             </div>

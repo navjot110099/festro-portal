@@ -186,14 +186,14 @@ export function ReportPreview({ template, period }: { template: ReportTemplate; 
           <ol className="mt-2.5 grid gap-2 sm:grid-cols-3">
             {c.next.map((n, i) => (
               <li key={n} className="text-[12.5px] leading-snug text-[#463f42]">
-                <span className="mb-1 block font-mono text-[10.5px] text-[#958d90]">0{i + 1}</span>
+                <span className="mb-1 block font-mono text-[10.5px] text-[#736c70]">0{i + 1}</span>
                 {n}
               </li>
             ))}
           </ol>
         </section>
 
-        <footer className="mt-8 flex items-center justify-between border-t border-[#efe8de] pt-4 text-[10.5px] text-[#958d90]">
+        <footer className="mt-8 flex items-center justify-between border-t border-[#efe8de] pt-4 text-[10.5px] text-[#736c70]">
           <span>Sections: {template.sections.join(" · ")}</span>
           <span>Page 1 of {template.pages}</span>
         </footer>

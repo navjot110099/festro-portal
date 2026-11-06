@@ -33,7 +33,7 @@ export function BarList({
     <ul className={cn("space-y-3", className)} aria-label={ariaLabel}>
       {items.map((item, i) => (
         <li key={item.id} className="group">
-          <div className="mb-1.5 flex items-baseline justify-between gap-3 text-[13px]">
+          <div className="mb-1.5 flex items-baseline justify-between gap-3 text-body">
             <span className="min-w-0 truncate text-fg-2">{item.label}</span>
             <span className="flex shrink-0 items-baseline gap-2">
               {item.meta}

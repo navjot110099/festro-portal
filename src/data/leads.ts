@@ -186,7 +186,7 @@ export function buildLeads(now = Date.now()): Lead[] {
       .replace(/[̀-ͯ]/g, "")
       .replace(/&/g, "and")
       .replace(/[^a-z0-9]+/g, "")
-      .slice(0, 18)}.com`;
+      .slice(0, 18)}.example`; // reserved TLD (RFC 2606): placeholder addresses can never reach a real inbox
     return {
       id: `lead_${(1040 + i).toString()}`,
       name,

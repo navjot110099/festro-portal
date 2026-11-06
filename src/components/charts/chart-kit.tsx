@@ -35,10 +35,10 @@ export interface TooltipRow {
 export function ChartTooltipCard({ title, rows, footer }: { title: string; rows: TooltipRow[]; footer?: React.ReactNode }) {
   return (
     <div className="min-w-44 rounded-xl border border-line bg-surface/95 px-3 py-2.5 shadow-lg backdrop-blur-sm">
-      <p className="mb-1.5 text-[11.5px] font-medium text-muted">{title}</p>
+      <p className="mb-1.5 text-micro font-medium text-muted">{title}</p>
       <div className="space-y-1">
         {rows.map((r) => (
-          <div key={r.key} className="flex items-center justify-between gap-5 text-[12.5px]">
+          <div key={r.key} className="flex items-center justify-between gap-5 text-caption">
             <span className="flex items-center gap-2 text-fg-2">
               {r.color && <span className="h-2.5 w-2.5 rounded-[3px]" style={{ background: r.color, opacity: r.muted ? 0.55 : 1 }} aria-hidden />}
               {r.label}
@@ -47,7 +47,7 @@ export function ChartTooltipCard({ title, rows, footer }: { title: string; rows:
           </div>
         ))}
       </div>
-      {footer && <div className="mt-2 border-t border-line pt-2 text-[11.5px]">{footer}</div>}
+      {footer && <div className="mt-2 border-t border-line pt-2 text-micro">{footer}</div>}
     </div>
   );
 }
@@ -56,7 +56,7 @@ export function Legend({ items, className }: { items: { label: string; color: st
   return (
     <ul className={cn("flex flex-wrap items-center gap-x-4 gap-y-1.5", className)} aria-label="Legend">
       {items.map((i) => (
-        <li key={i.label} className="flex items-center gap-2 text-[12px] text-muted">
+        <li key={i.label} className="flex items-center gap-2 text-caption text-muted">
           {i.dashed ? (
             <svg width="16" height="4" aria-hidden>
               <line x1="0" y1="2" x2="16" y2="2" stroke={i.color} strokeWidth="2" strokeDasharray="3 3" strokeLinecap="round" />

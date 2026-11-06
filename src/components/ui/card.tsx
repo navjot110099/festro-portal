@@ -38,10 +38,10 @@ export function CardHeader({
       <div className="flex min-w-0 items-start gap-3">
         {icon}
         <div className="min-w-0">
-          <h2 id={titleId} className="text-[14.5px] font-semibold tracking-tight text-fg">
+          <h2 id={titleId} className="text-title font-semibold tracking-tight text-fg">
             {title}
           </h2>
-          {description && <p className="mt-0.5 text-[12.5px] text-muted">{description}</p>}
+          {description && <p className="mt-0.5 text-caption text-muted">{description}</p>}
         </div>
       </div>
       {action && <div className="flex shrink-0 items-center gap-2">{action}</div>}

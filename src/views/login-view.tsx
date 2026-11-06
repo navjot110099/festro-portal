@@ -18,7 +18,7 @@ export function LoginView() {
         </div>
         <footer className="relative flex flex-col items-center justify-between gap-2 text-[12px] text-subtle sm:flex-row">
           <p>© {new Date().getFullYear()} Festro. Digital Growth. Built Smarter.</p>
-          <p>Demo environment · all data is illustrative</p>
+          <p>Private client platform</p>
         </footer>
       </main>
     </div>

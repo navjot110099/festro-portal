@@ -78,9 +78,9 @@ function ThemePreview({ mode }: { mode: "light" | "dark" }) {
 }
 
 const demoModes: { value: DemoMode; title: string; description: string; icon: React.ElementType }[] = [
-  { value: "live", title: "Live demo data", description: "A fully populated workspace with realistic, illustrative data.", icon: Database },
-  { value: "empty", title: "Empty workspace", description: "Preview every section before any data source is connected.", icon: FlaskConical },
-  { value: "error", title: "Simulate outages", description: "Preview error states and retry behaviour across the portal.", icon: TriangleAlert },
+  { value: "live", title: "Full workspace", description: "Every section populated with your workspace data.", icon: Database },
+  { value: "empty", title: "Empty workspace", description: "See each section before any data source is connected.", icon: FlaskConical },
+  { value: "error", title: "Connection issues", description: "See how each section handles a source that isn't responding.", icon: TriangleAlert },
 ];
 
 function subscribeDemo(cb: () => void) {
@@ -115,7 +115,7 @@ export function SettingsView() {
     { value: "appearance", label: "Appearance" },
     { value: "notifications", label: "Notifications" },
     { value: "integrations", label: "Integrations" },
-    { value: "data", label: "Demo data" },
+    { value: "data", label: "Data states" },
     { value: "security", label: "Security" },
   ];
 
@@ -174,7 +174,7 @@ export function SettingsView() {
                 <Input id={ids.ws} defaultValue={currentUser.workspace} />
               </Field>
               <Field label="Website" htmlFor={ids.url}>
-                <Input id={ids.url} defaultValue="https://meridian.studio" />
+                <Input id={ids.url} defaultValue="https://meridianstudio.example" />
               </Field>
               <Field label="Time zone" htmlFor={ids.tz}>
                 <NativeSelect id={ids.tz} defaultValue="America/Chicago">
@@ -347,8 +347,8 @@ export function SettingsView() {
         </TabsContent>
 
         <TabsContent value="data" className="mt-6 space-y-4 outline-none">
-          <Section title="Demo data mode" description="This portfolio build runs on a mock data layer. Switch modes to preview how every section handles empty and error states.">
-            <div role="radiogroup" aria-label="Demo data mode" className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          <Section title="Data states" description="Preview how every section of the portal looks with full data, an empty workspace, or a data source that isn't responding.">
+            <div role="radiogroup" aria-label="Data state" className="grid grid-cols-1 gap-3 md:grid-cols-3">
               {demoModes.map((m) => {
                 const active = demoMode === m.value;
                 return (

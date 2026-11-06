@@ -176,6 +176,16 @@
   --color-cream: #efe8de;
   --color-charcoal: #171416;
 
+  /* UI type scale: four steps cover every label, row and card title */
+  --text-micro: 0.71875rem; /* 11.5px: timestamps, tiny meta */
+  --text-micro--line-height: 1.4;
+  --text-caption: 0.78125rem; /* 12.5px: secondary text, comparisons */
+  --text-caption--line-height: 1.45;
+  --text-body: 0.84375rem; /* 13.5px: row text, list items */
+  --text-body--line-height: 1.5;
+  --text-title: 0.9375rem; /* 15px: card titles */
+  --text-title--line-height: 1.35;
+
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
   --font-display: var(--font-instrument-serif), "Iowan Old Style", Georgia, serif;

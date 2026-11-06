@@ -16,8 +16,8 @@ export function KpiCard({ kpi, index = 0, variant = "primary", className }: { kp
     <Card interactive className={cn("group h-full overflow-hidden", compact ? "p-4" : "p-4 sm:p-5", className)}>
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="flex items-center gap-1.5 text-[12.5px] font-medium text-muted">
-            <span className="truncate">{kpi.label}</span>
+          <p className="flex items-center gap-1.5 text-caption font-medium text-muted">
+            <span className="leading-snug">{kpi.label}</span>
             {kpi.hint && (
               <Tooltip content={kpi.hint}>
                 <button type="button" aria-label={`About ${kpi.label}`} className="text-subtle hover:text-fg">
@@ -26,7 +26,7 @@ export function KpiCard({ kpi, index = 0, variant = "primary", className }: { kp
               </Tooltip>
             )}
           </p>
-          <p className="mt-0.5 text-[11px] text-subtle">{kpi.period}</p>
+          <p className="mt-0.5 text-micro text-subtle">{kpi.period}</p>
         </div>
         {!compact && kpi.spark && <Sparkline data={kpi.spark} width={84} height={30} className="-mt-0.5 hidden shrink-0 opacity-90 transition-opacity group-hover:opacity-100 sm:block" />}
       </div>
@@ -38,7 +38,7 @@ export function KpiCard({ kpi, index = 0, variant = "primary", className }: { kp
       />
       <div className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-0.5">
         <Delta change={kpi.change} kind={kpi.changeKind} inverse={kpi.inverse} />
-        <span className="text-[11.5px] text-subtle sm:text-[12px]">{kpi.comparison}</span>
+        <span className="text-micro text-subtle sm:text-caption">{kpi.comparison}</span>
       </div>
     </Card>
   );

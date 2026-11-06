@@ -161,7 +161,7 @@ export function BrandPanel() {
   return (
     <section
       aria-labelledby="brand-heading"
-      className="relative isolate flex flex-col overflow-hidden bg-[linear-gradient(150deg,#1d0c12_0%,#2c0f18_45%,#140709_100%)] px-6 pt-5 pb-7 text-ivory sm:px-10 sm:pb-10 lg:min-h-dvh lg:px-14 lg:pt-10 lg:pb-10"
+      className="relative isolate flex flex-col overflow-hidden bg-[#230e15] bg-[linear-gradient(150deg,#1d0c12_0%,#2c0f18_45%,#140709_100%)] px-6 pt-5 pb-7 text-ivory sm:px-10 sm:pb-10 lg:min-h-dvh lg:px-14 lg:pt-10 lg:pb-10"
     >
       <Atmosphere />
 

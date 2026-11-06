@@ -27,7 +27,7 @@ export function EmptyState({
       </span>
       <div className="max-w-sm space-y-1">
         <p className="text-sm font-medium text-fg">{title}</p>
-        {description && <p className="text-[13px] leading-relaxed text-muted">{description}</p>}
+        {description && <p className="text-body leading-relaxed text-muted">{description}</p>}
       </div>
       {action && <div className="mt-1">{action}</div>}
     </div>
@@ -54,7 +54,7 @@ export function ErrorState({
       </span>
       <div className="max-w-sm space-y-1">
         <p className="text-sm font-medium text-fg">{title}</p>
-        <p className="text-[13px] leading-relaxed text-muted">{error?.message ?? "Please try again in a moment."}</p>
+        <p className="text-body leading-relaxed text-muted">{error?.message ?? "Please try again in a moment."}</p>
       </div>
       {onRetry && (
         <Button variant="secondary" size="sm" onClick={onRetry} className="mt-1">

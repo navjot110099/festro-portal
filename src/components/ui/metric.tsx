@@ -41,7 +41,7 @@ export function Delta({
     <span
       className={cn(
         "inline-flex items-center gap-0.5 rounded-md font-medium tabular",
-        size === "xs" ? "text-[11px]" : "text-[12px]",
+        size === "xs" ? "text-micro" : "text-caption",
         good === null ? "text-muted" : good ? "text-success" : "text-danger",
         className,
       )}

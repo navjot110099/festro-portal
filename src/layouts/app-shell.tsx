@@ -6,6 +6,7 @@ import { useToast } from "@/components/providers/toast-provider";
 import { useHotkey } from "@/hooks/use-hotkey";
 import { useStoredState } from "@/hooks/use-stored-state";
 import { CommandPalette } from "./command-palette";
+import { DataStateBanner } from "./data-state-banner";
 import { MobileDrawer, MobileTabBar } from "./mobile-nav";
 import { ShortcutsDialog } from "./shortcuts-dialog";
 import { Sidebar, SIDEBAR_COLLAPSED, SIDEBAR_EXPANDED } from "./sidebar";
@@ -88,6 +89,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </a>
       <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} />
       <div className="transition-[padding] duration-300 ease-out lg:pl-[var(--sidebar-w)]">
+        <DataStateBanner />
         <Topbar onOpenNav={() => setNavOpen(true)} onOpenCommand={() => setCommandOpen(true)} onShowShortcuts={() => setShortcutsOpen(true)} />
         <main id="main" tabIndex={-1} className="mx-auto w-full max-w-[1480px] px-4 pt-6 pb-28 outline-none sm:px-6 lg:px-8 lg:pt-8 lg:pb-14">
           {children}

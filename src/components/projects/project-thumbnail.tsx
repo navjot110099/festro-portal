@@ -15,7 +15,7 @@ export function ProjectThumbnail({ project, className, large }: { project: Proje
   return (
     <div
       role="img"
-      aria-label={`Illustrative preview of the ${project.name} ${project.industry.toLowerCase()} project`}
+      aria-label={`Artwork preview for the ${project.name} ${project.industry.toLowerCase()} project`}
       className={cn("noise relative isolate overflow-hidden", large ? "aspect-[16/8]" : "aspect-[16/10]", className)}
       style={{ background: bg }}
     >
