@@ -3,7 +3,7 @@ import { setDemoMode } from "@/lib/api/client";
 import { sleep } from "@/lib/utils";
 
 /**
- * Mock authentication for the portfolio build.
+ * Authentication layer.
  *
  * The session is a cookie so the edge `proxy.ts` can protect portal routes
  * before anything renders. To go to production, replace `signIn` with a call

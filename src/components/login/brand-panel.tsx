@@ -88,7 +88,7 @@ function PreviewChart() {
   );
 }
 
-/** A floating, illustrative glimpse of the portal. */
+/** A floating glimpse of the portal. */
 function ProductGlimpse() {
   return (
     <div className="relative mx-auto mt-12 mb-8 w-full max-w-[460px]" aria-hidden>

@@ -1,14 +1,14 @@
 import { sleep } from "@/lib/utils";
 
 /**
- * Demo transport.
+ * API transport.
  *
  * Every resource in `src/lib/api` goes through `request()`. Today it resolves
  * mock data after a realistic delay. To connect a real backend, change
  * `request()` to call `fetch(`${API_URL}${path}`)` (or a Supabase query) and
  * keep the resource signatures. Components never import mock data directly.
  *
- * The demo mode lets reviewers preview every state a section can be in.
+ * The data-state modes let you preview every state a section can be in.
  */
 export type DemoMode = "live" | "empty" | "error";
 

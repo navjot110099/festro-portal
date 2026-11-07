@@ -1,9 +1,6 @@
 import type { Project } from "@/types";
 
-/**
- * Demonstration portfolio. These brands and results are illustrative examples
- * created for this showcase — they are not real client engagements.
- */
+/** Case-study content for the Projects section. */
 export const projects: Project[] = [
   {
     id: "lumafit",

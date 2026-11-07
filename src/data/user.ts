@@ -1,8 +1,8 @@
 import type { CurrentUser, TeamMember } from "@/types";
 
 /**
- * Demo login for the portfolio build — documented in README.md.
- * Never ship real credentials in client code; this account only unlocks mock data.
+ * Sign-in account — documented in README.md.
+ * Never ship real credentials in client code; this account only unlocks the seeded workspace.
  */
 export const demoAccount = {
   email: "deep@festro.com",

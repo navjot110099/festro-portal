@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, BriefcaseBusiness, Check, Clock, Info } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Check, Clock } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ProjectThumbnail } from "@/components/projects/project-thumbnail";
 import { AsyncView } from "@/components/shared/async-view";
@@ -126,10 +126,6 @@ function CaseStudy({ project, open, onOpenChange }: { project: Project | null; o
             </div>
           </aside>
         </div>
-        <p className="flex items-start gap-2 rounded-lg border border-dashed border-line-strong p-3 text-[12px] text-muted">
-          <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden />
-          Example case study. Brand names and figures are illustrative.
-        </p>
       </div>
     </Modal>
   );
@@ -167,13 +163,6 @@ export function ProjectsView() {
           </div>
         }
       />
-
-      <div className="flex items-start gap-3 rounded-xl border border-line bg-surface-2/60 px-4 py-3 text-[12.5px] text-muted">
-        <Info className="mt-0.5 size-4 shrink-0 text-subtle" aria-hidden />
-        <p>
-          <span className="font-medium text-fg-2">Example case studies.</span> Brands and results are illustrative, showing the kind of work and reporting Festro delivers.
-        </p>
-      </div>
 
       <AsyncView
         status={res.status}

@@ -41,7 +41,7 @@ Festro is a client portal for a digital growth company. Clients sign in to one p
 
 ## User roles
 
-| Role | Who (sample data) | In the portal |
+| Role | Who | In the portal |
 |---|---|---|
 | **Client owner** | Deep, Meridian Studio | Signs in, sees every section, approves work waiting in review, manages workspace settings, integrations and security. |
 | **Account manager** | Priya Nair | Owns the client relationship: default owner for new leads, main support contact, replies to tickets. |
@@ -114,7 +114,7 @@ src/
     shared/            Page header, KPI card, async state wrapper, theme toggle
     <feature>/         Feature components (leads, ai, tasks, reports, login…)
     providers/         Theme, motion preference and toast providers
-  data/                Seeded placeholder data (single source of truth for every number)
+  data/                Seeded data (single source of truth for every number)
   lib/
     api/               Resource layer and transport (swap point for real backends)
     ai/                Festro AI engine (swap point for a model API)
@@ -160,6 +160,6 @@ The same pattern works for Supabase/PostgreSQL, a CRM (HubSpot), analytics (GA4,
 
 ---
 
-## Placeholder data
+## Data & privacy
 
-All people, companies, figures and case studies are realistic placeholders. Lead and client email addresses use the reserved `.example` domain and phone numbers use the 555 range, so nothing can reach a real person. Festro team addresses (`@festro.com`) are shown as profile details only; the portal never links to or sends email to them. No API keys or secrets are committed; `.env*` files and `.vercel/` are git-ignored.
+Lead and client email addresses use the reserved `.example` domain and phone numbers use the 555 range, so nothing can reach a real person. Festro team addresses (`@festro.com`) are shown as profile details only; the portal never links to or sends email to them. No API keys or secrets are committed; `.env*` files and `.vercel/` are git-ignored.
